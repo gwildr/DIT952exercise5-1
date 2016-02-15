@@ -27,6 +27,6 @@ public abstract class Polygon extends JComponent{
         drawer.frame.repaint();
     }
     @Override
-    public abstract void paint(Graphics g)//paint
-    ;
+    public abstract void paint(Graphics g);//paint
+    
 }

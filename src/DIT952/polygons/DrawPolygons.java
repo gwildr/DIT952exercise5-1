@@ -34,6 +34,10 @@ public class DrawPolygons extends JComponent{
             ticker = 0;
         }
     }
+
+    protected void tickUp(){
+        ticker++;
+    }
     @Override
     public void paint(Graphics g) {
         for (Polygon currentPolygon : polygons) {
