@@ -29,8 +29,4 @@ public abstract class Polygon extends JComponent{
     @Override
     public abstract void paint(Graphics g);//paint
 
-	public void stupidMethod(){
-//Does nothing.
-}
-
 }
