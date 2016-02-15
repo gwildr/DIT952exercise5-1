@@ -6,6 +6,7 @@ import java.awt.*;
 /**
  * Created by Niklas on 2016-01-19.
  */
+@SuppressWarnings("serial")
 public abstract class Polygon extends JComponent{
     public Point centerPoint;
     public DrawPolygons drawer;

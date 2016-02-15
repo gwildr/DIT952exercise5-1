@@ -20,18 +20,23 @@ public class DrawPolygons extends JComponent{
     }//constructor
 
     public void update(){
-        ticker++;
-        int value = direction ? 10 : -10;
-        for (Polygon p: polygons){
-            p.updateCenter(p.centerPoint.x+value, p.centerPoint.y+value);
-        }
+        tickUp();
+        updatePolygonCenters(setValue());
         setDirection();
+   
     }
-
-    protected void setDirection(){
+    private int setValue(){
+    	return direction ? 10 : -10;
+    }
+    private void setDirection(){
         if (ticker > 10) {
             direction = !direction;
             ticker = 0;
+        }
+    }
+    private void updatePolygonCenters(int value){
+    	for (Polygon p: polygons){
+            p.updateCenter(p.centerPoint.x+value, p.centerPoint.y+value);
         }
     }
 
