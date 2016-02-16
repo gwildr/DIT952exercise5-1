@@ -21,11 +21,11 @@ public class DrawPolygons extends JComponent{
 
     public void update(){
         tickUp();
-        updatePolygonCenters(setValue());
+        updatePolygonCenters(setTranslation());
         setDirection();
    
     }
-    private int setValue(){
+    private int setTranslation(){
     	return direction ? 10 : -10;
     }
     private void setDirection(){
