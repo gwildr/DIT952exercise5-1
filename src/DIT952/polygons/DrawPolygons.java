@@ -31,9 +31,13 @@ public class DrawPolygons extends JComponent{
     private void setDirection(){
         if (ticker > 10) {
             direction = !direction;
-            ticker = 0;
+            resetTicker();
         }
     }
+
+	private void resetTicker() {
+		ticker = 0;
+	}
     private void updatePolygonCenters(int value){
     	for (Polygon p: polygons){
             p.updateCenter(p.centerPoint.x+value, p.centerPoint.y+value);
@@ -43,6 +47,7 @@ public class DrawPolygons extends JComponent{
     protected void tickUp(){
         ticker++;
     }
+    
     @Override
     public void paint(Graphics g) {
         for (Polygon currentPolygon : polygons) {
