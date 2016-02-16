@@ -51,6 +51,16 @@ public abstract class Shape extends JComponent {
         this.rotation = rotation + angle;
     }
 
+    protected Point rotateCorner(Point center, Point newCorner, double alpha) {
+		
+		double newX = center.x + (newCorner.x - center.x) * 
+				Math.cos(alpha) - (newCorner.y - center.y) * 
+				Math.sin(alpha);
+		double newY = center.y + (newCorner.x - center.x) * 
+				Math.sin(alpha) + (newCorner.y - center.y) * 
+				Math.cos(alpha);
+		return new Point((int) newX, (int) newY);
+	}
     public abstract void paint(Graphics g);
 
 }
