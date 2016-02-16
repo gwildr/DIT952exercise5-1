@@ -48,8 +48,12 @@ public class Rectangle extends Shape {
 
             // rotate by 'getRotation' degrees
             double alpha = Math.toRadians(getRotation());
-            double newX = center.x + (newCorner.x - center.x) * Math.cos(alpha) - (newCorner.y - center.y) * Math.sin(alpha);
-            double newY = center.y + (newCorner.x - center.x) * Math.sin(alpha) + (newCorner.y - center.y) * Math.cos(alpha);
+            double newX = center.x + (newCorner.x - center.x) * 
+            		Math.cos(alpha) - (newCorner.y - center.y) * 
+            		Math.sin(alpha);
+            double newY = center.y + (newCorner.x - center.x) * 
+            		Math.sin(alpha) + (newCorner.y - center.y) * 
+            		Math.cos(alpha);
             newCorner.move((int) newX, (int) newY);
 
             corners.add(newCorner);

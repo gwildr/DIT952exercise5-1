@@ -34,21 +34,28 @@ public class Triangle extends Shape {
 
         for (int i = 0; i < 3; i++){
             // start from center, find corner
-            Point newCorner = new Point(center.x+offsets[i][0], center.y+offsets[i][1]);
+//            Point newCorner = new Point(center.x+offsets[i][0], center.y+offsets[i][1]);
 
             // rotate by 'getRotation' degrees
-            rotateCorner(center, newCorner, Math.toRadians(getRotation()));
+            Point newCorner = 
+            		rotateCorner(center, 
+            			new Point(center.x+offsets[i][0], center.y+offsets[i][1]), 
+            			Math.toRadians(getRotation()));
 
             corners.add(newCorner);
         }
         return corners;
     }
-	private void rotateCorner(Point center, Point newCorner, double alpha) {
+	/*private Point rotateCorner(Point center, Point newCorner, double alpha) {
 		
-		double newX = center.x + (newCorner.x - center.x) * Math.cos(alpha) - (newCorner.y - center.y) * Math.sin(alpha);
-		double newY = center.y + (newCorner.x - center.x) * Math.sin(alpha) + (newCorner.y - center.y) * Math.cos(alpha);
-		newCorner.move((int) newX, (int) newY);
-	}
+		double newX = center.x + (newCorner.x - center.x) * 
+				Math.cos(alpha) - (newCorner.y - center.y) * 
+				Math.sin(alpha);
+		double newY = center.y + (newCorner.x - center.x) * 
+				Math.sin(alpha) + (newCorner.y - center.y) * 
+				Math.cos(alpha);
+		return new Point((int) newX, (int) newY);
+	}*/
 	private int[][] getOffsets() {
 		int scaleX = getScaleX();
 		int scaleY = getScaleY();
