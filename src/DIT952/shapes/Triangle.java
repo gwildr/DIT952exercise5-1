@@ -30,27 +30,36 @@ public class Triangle extends Shape {
         java.util.List<Point> corners = new ArrayList<>(3);
 
         Point center = getCenterPoint();
-        int[][] offsets = {
-                { 0,             -getScaleY()*58/100},
-                {-getScaleX()/2,  getScaleY()*29/100},
-                { getScaleX()/2,  getScaleY()*29/100}
-        };
+        int[][] offsets = getOffsets();
 
         for (int i = 0; i < 3; i++){
             // start from center, find corner
             Point newCorner = new Point(center.x+offsets[i][0], center.y+offsets[i][1]);
 
-
             // rotate by 'getRotation' degrees
-            double alpha = Math.toRadians(getRotation());
-            double newX = center.x + (newCorner.x - center.x) * Math.cos(alpha) - (newCorner.y - center.y) * Math.sin(alpha);
-            double newY = center.y + (newCorner.x - center.x) * Math.sin(alpha) + (newCorner.y - center.y) * Math.cos(alpha);
-            newCorner.move((int) newX, (int) newY);
+            rotateCorner(center, newCorner, Math.toRadians(getRotation()));
 
             corners.add(newCorner);
         }
         return corners;
     }
+	private void rotateCorner(Point center, Point newCorner, double alpha) {
+		
+		double newX = center.x + (newCorner.x - center.x) * Math.cos(alpha) - (newCorner.y - center.y) * Math.sin(alpha);
+		double newY = center.y + (newCorner.x - center.x) * Math.sin(alpha) + (newCorner.y - center.y) * Math.cos(alpha);
+		newCorner.move((int) newX, (int) newY);
+	}
+	private int[][] getOffsets() {
+		int scaleX = getScaleX();
+		int scaleY = getScaleY();
+		
+		int[][] offsets = {
+                { 0,        -scaleY*58/100},
+                {-scaleX/2,  scaleY*29/100},
+                { scaleX/2,  scaleY*29/100}
+        };
+		return offsets;
+	}
 
     public void paint(Graphics g){
         java.util.List<Point> corners = getCorners();
